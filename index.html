@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="strict-origin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Font Awesome Icons</title>
+    <script src="//unpkg.com/contentful-ui-extensions-sdk@3"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-MkkthiFx7890Rev6vwUJO4gRT4yuH5tqMm/Wl4/n9/qptaBpiGcMyjfgq2K4h394" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-4HqGlagEHMyfaDQVabl1wx7GCtGw6hDl3sKJEhqQjOCrXrvizhaA2j4hK8Piewtr" crossorigin="anonymous">
+    <style>
+      html, body {
+        overflow: hidden;
+      }
+      body {
+        font-family: sans-serif;
+      }
+      [v-cloak] {
+        display: none;
+      }
+      select {
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 900;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div v-cloak>
+        <div class="field">
+          <div class="control is-expanded">
+            <div class="select">
+              <select v-model="value">
+                <option v-for="(icon, i) of icons" :key="i" :value="icon.class" v-html="'&#x' + icon.code + ';'" />  
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // Initial value: this.props.api.field.getValue()
+      // Set value: this.props.api.field.setValue(value);
+      window.contentfulExtension.init(function(api) {
+        Vue.prototype.$api = api;
+        var app = new Vue({
+          el: '#root',
+          data() {
+            return {
+              icons: [
+                {class: 'award', code: 'f559'},
+                {class: 'air-freshener', code: 'f5d0'},
+                {class: 'battery-bolt', code: 'f376'},
+                {class: 'binoculars', code: 'f1e5'},
+                {class: 'beer', code: 'f0fc'},
+                {class: 'blanket', code: 'f498'},
+                {class: 'calendar', code: 'f133'},
+                {class: 'camera-retro', code: 'f083'},
+                {class: 'child', code: 'f1ae'},
+                {class: 'clock', code: 'f017'},
+                {class: 'cookie-bite', code: 'f564'},
+                {class: 'credit-card', code: 'f09d'},
+                {class: 'directions', code: 'f5eb'},
+                {class: 'envelope', code: 'f0e0'},
+                {class: 'globe', code: 'f0ac'},
+                {class: 'id-card', code: 'f2c2'},
+                {class: 'language', code: 'f1ab'},
+              ]
+            }
+          },
+          computed: {
+            value: {
+              get() {
+                return this.$api.field.getValue();
+              },
+              set(val) {
+                this.$api.field.setValue(product.productCode);
+            	}
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
