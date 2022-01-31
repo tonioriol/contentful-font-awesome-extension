@@ -1,0 +1,7 @@
+
+{
+  "id": "fa",
+  "fieldTypes":["Symbol"],
+  "name":"Font Awesome",
+  "srcdoc":"index.html"
+}
